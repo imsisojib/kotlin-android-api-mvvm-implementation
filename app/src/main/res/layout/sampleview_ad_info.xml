@@ -6,7 +6,6 @@
     android:id="@+id/constraintlayout_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="8dp"
     android:layout_marginTop="8dp">
 
     <LinearLayout
@@ -14,7 +13,7 @@
         android:background="@drawable/card_bg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="24dp"
         android:layout_marginEnd="4dp"
         android:orientation="vertical"
         android:paddingBottom="8dp"
@@ -27,7 +26,7 @@
 
         <LinearLayout
             android:padding="4dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="20dp"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -156,10 +155,13 @@
 
     </LinearLayout>
 
-    <ImageView
+    <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/img_user"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:civ_border_width="1dp"
+        app:civ_border_color="@color/black"
+        android:layout_marginStart="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/ic_launcher" />

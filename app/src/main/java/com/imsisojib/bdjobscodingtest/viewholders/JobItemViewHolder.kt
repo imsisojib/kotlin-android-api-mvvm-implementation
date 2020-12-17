@@ -9,6 +9,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.imsisojib.bdjobscodingtest.R
 import com.imsisojib.bdjobscodingtest.beans.Data
+import com.mikhaellopez.circularimageview.CircularImageView
 
 class JobItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val tvTittle: TextView = itemView.findViewById(R.id.tv_tittle);
@@ -17,7 +18,7 @@ class JobItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val tvDeadline: TextView = itemView.findViewById(R.id.tv_deadline);
         val tvApplicationProcess: TextView = itemView.findViewById(R.id.tv_application_process)
         val tvExperience: TextView = itemView.findViewById(R.id.tv_experience)
-        val logo: ImageView = itemView.findViewById(R.id.img_user)
+        val logo: CircularImageView = itemView.findViewById(R.id.img_user)
         val container: ConstraintLayout = itemView.findViewById(R.id.constraintlayout_container);
         val linearContainer: LinearLayout = itemView.findViewById(R.id.linearlayout_container);
 }
