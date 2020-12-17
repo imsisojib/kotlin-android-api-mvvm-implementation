@@ -40,6 +40,11 @@ class JobsAdapter(private var jobs: List<Data>): RecyclerView.Adapter<JobItemVie
             holder.tvSalary.text = jobs[position].getMinSalary()+"-"+jobs[position].getMaxSalary()
         }else holder.tvSalary.text = "Negotiable"
 
+        //highlighted item
+        if (jobs[position].isFeatured()!!){
+            holder.linearContainer.setBackgroundResource(R.drawable.highlighted_item)
+        }
+
         holder.tvCompanyName.text = jobs[position].getCompanyProfile()
         Glide.with(holder.itemView.context)
             .load(jobs[position].getLogo())
