@@ -35,11 +35,18 @@ class JobsAdapter(private var jobs: List<Data>): RecyclerView.Adapter<JobItemVie
             )
         }
 
+        //salary range
+        if(!jobs[position].getMinSalary().isNullOrEmpty() && !jobs[position].getMaxSalary().isNullOrEmpty()){
+            holder.tvSalary.text = jobs[position].getMinSalary()+"-"+jobs[position].getMaxSalary()
+        }else holder.tvSalary.text = "Negotiable"
+
         holder.tvCompanyName.text = jobs[position].getCompanyProfile()
         Glide.with(holder.itemView.context)
             .load(jobs[position].getLogo())
             .into(holder.logo)
 
+
+        //animation
         holder.linearContainer.animation = AnimationUtils.loadAnimation(holder.linearContainer.context,R.anim.fade_transition_animation)
         holder.logo.animation = AnimationUtils.loadAnimation(holder.logo.context,R.anim.fade_scale_animation)
 
