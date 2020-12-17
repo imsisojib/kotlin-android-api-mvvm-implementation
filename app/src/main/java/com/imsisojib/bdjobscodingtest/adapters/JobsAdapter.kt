@@ -27,11 +27,11 @@ class JobsAdapter(private var jobs: List<Data>): RecyclerView.Adapter<JobItemVie
         holder.tvTittle.text = jobs[position].getJobTittle()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             holder.tvApplicationProcess.text = Html.fromHtml(jobs[position].getJobDetails()
-                ?.getApplyInstruction()?.replaceFirst("<br><br>",""), Html.FROM_HTML_MODE_COMPACT)
+                ?.getApplyInstruction()?.replace("<br><br>","")?.replaceFirst("<hr>","<br>"), Html.FROM_HTML_MODE_COMPACT)
         } else {
             holder.tvApplicationProcess.text = Html.fromHtml(
                 jobs[position].getJobDetails()
-                    ?.getApplyInstruction()?.replaceFirst("<br><br>","")
+                    ?.getApplyInstruction()?.replace("<br><br>","")?.replaceFirst("<hr>","<br>")
             )
         }
 
@@ -47,6 +47,9 @@ class JobsAdapter(private var jobs: List<Data>): RecyclerView.Adapter<JobItemVie
         //format date
         holder.tvDeadline.text = formatDeadline(jobs[position].getJobDetails()?.getLastDate().toString())
 
+        //experience
+        holder.tvExperience.text = formatExperience(jobs[position].getMinExperience(),jobs[position].getMaxExperience())
+
         holder.tvCompanyName.text = jobs[position].getCompanyProfile()
         Glide.with(holder.itemView.context)
             .load(jobs[position].getLogo())
@@ -56,6 +59,17 @@ class JobsAdapter(private var jobs: List<Data>): RecyclerView.Adapter<JobItemVie
         //animation
         holder.linearContainer.animation = AnimationUtils.loadAnimation(holder.linearContainer.context,R.anim.fade_transition_animation)
         holder.logo.animation = AnimationUtils.loadAnimation(holder.logo.context,R.anim.fade_scale_animation)
+
+    }
+
+    private fun formatExperience(minExperience: Int?, maxExperience: Int?): String? {
+        return if (minExperience==null && maxExperience ==null){
+            "Exp-Not Required"
+        } else if (minExperience==null && maxExperience!=null){
+            "Exp(Years): Max-$maxExperience"
+        } else if (minExperience!=null && maxExperience==null){
+            "Exp(Years): Min-$minExperience"
+        } else "Exp(Years): $minExperience-$maxExperience"
 
     }
 

@@ -16,7 +16,7 @@ class JobItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val tvCompanyName: TextView = itemView.findViewById(R.id.tv_company_name);
         val tvDeadline: TextView = itemView.findViewById(R.id.tv_deadline);
         val tvApplicationProcess: TextView = itemView.findViewById(R.id.tv_application_process)
-
+        val tvExperience: TextView = itemView.findViewById(R.id.tv_experience)
         val logo: ImageView = itemView.findViewById(R.id.img_user)
         val container: ConstraintLayout = itemView.findViewById(R.id.constraintlayout_container);
         val linearContainer: LinearLayout = itemView.findViewById(R.id.linearlayout_container);
