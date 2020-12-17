@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Bdjobs CodingTest</string>
+    <string name="nothing_found">No Job Circular Found!</string>
+    <string name="total_job">Total Circular</string>
 </resources>
