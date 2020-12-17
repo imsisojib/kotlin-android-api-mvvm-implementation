@@ -19,5 +19,5 @@ class JobItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
         val logo: ImageView = itemView.findViewById(R.id.img_user)
         val container: ConstraintLayout = itemView.findViewById(R.id.constraintlayout_container);
-
+        val linearContainer: LinearLayout = itemView.findViewById(R.id.linearlayout_container);
 }
