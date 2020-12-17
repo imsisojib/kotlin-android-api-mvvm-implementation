@@ -44,6 +44,8 @@ class JobsAdapter(private var jobs: List<Data>): RecyclerView.Adapter<JobItemVie
         if (jobs[position].isFeatured()!!){
             holder.linearContainer.setBackgroundResource(R.drawable.highlighted_item)
         }
+        //format date
+        holder.tvDeadline.text = formatDeadline(jobs[position].getJobDetails()?.getLastDate().toString())
 
         holder.tvCompanyName.text = jobs[position].getCompanyProfile()
         Glide.with(holder.itemView.context)
@@ -54,6 +56,22 @@ class JobsAdapter(private var jobs: List<Data>): RecyclerView.Adapter<JobItemVie
         //animation
         holder.linearContainer.animation = AnimationUtils.loadAnimation(holder.linearContainer.context,R.anim.fade_transition_animation)
         holder.logo.animation = AnimationUtils.loadAnimation(holder.logo.context,R.anim.fade_scale_animation)
+
+    }
+
+    private fun formatDeadline(dateStr: String): String{
+        if (dateStr.isNullOrEmpty()) return "";
+        var stringBuilder: StringBuilder = StringBuilder();
+        var items = dateStr.split(" ").toTypedArray();
+        if (items.size == 3){
+            stringBuilder.append(items[0])
+                    .append(" ")
+                    .append(items[1].subSequence(0,3))
+                    .append(", ")
+                    .append(items[2])
+        }
+
+        return stringBuilder.toString()
 
     }
 }
