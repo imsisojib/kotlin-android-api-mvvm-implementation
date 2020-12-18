@@ -42,7 +42,7 @@ class JobsAdapter(private var jobs: List<Data>): RecyclerView.Adapter<JobItemVie
 
         //highlighted item
         if (jobs[position].isFeatured()!!){
-            holder.linearContainer.setBackgroundResource(R.drawable.highlighted_item)
+            holder.linearContainer.setBackgroundResource(R.drawable.highlighted_gradient)
         }
         //format date
         holder.tvDeadline.text = formatDeadline(jobs[position].getJobDetails()?.getLastDate().toString())
@@ -66,10 +66,10 @@ class JobsAdapter(private var jobs: List<Data>): RecyclerView.Adapter<JobItemVie
         return if (minExperience==null && maxExperience ==null){
             "Exp-Not Required"
         } else if (minExperience==null && maxExperience!=null){
-            "Exp(Years): Max-$maxExperience"
+            "Exp(Year): Max-$maxExperience"
         } else if (minExperience!=null && maxExperience==null){
-            "Exp(Years): Min-$minExperience"
-        } else "Exp(Years): $minExperience-$maxExperience"
+            "Exp(Year): Min-$minExperience"
+        } else "Exp(Year): $minExperience-$maxExperience"
 
     }
 
